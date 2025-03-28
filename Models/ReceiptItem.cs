@@ -1,14 +1,15 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace LlmExtractionApi.Models
 {
     public class ReceiptItem
     {
-        public ReceiptItem() { }
-
+        [JsonIgnore]
+        public Receipt? Receipt { get; set; }
         public int ItemId { get; set; }
         public Guid ReceiptId { get; set; }
-        public Receipt Receipt { get; set; } = default!;
         public int RowNumber { get; set; }
         public string ItemFullTextDescription { get; set; } = string.Empty;
         public string ItemBrandNameArabic { get; set; } = string.Empty;

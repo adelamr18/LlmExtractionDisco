@@ -1,5 +1,7 @@
 
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace LlmExtractionApi.Models
 {
     public class Receipt

@@ -1,12 +1,17 @@
 
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
 namespace LlmExtractionApi.Models
 {
+    [Table("ReceiptMerchantContactsMetadata")]
     public class ReceiptMerchantContactsMetadata
     {
         public ReceiptMerchantContactsMetadata() { }
         public int MerchantContactsMetadataId { get; set; }
         public Guid ReceiptId { get; set; }
-        public Receipt Receipt { get; set; } = default!;
+        [JsonIgnore]
+        public Receipt? Receipt { get; set; }
         public string MerchantContactNumbers { get; set; } = string.Empty;
         public string MerchantEmail { get; set; } = string.Empty;
         public string Facebook { get; set; } = string.Empty;

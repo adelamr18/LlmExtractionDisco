@@ -36,6 +36,13 @@ namespace LlmExtractionApi.Data
                   .WithMany(r => r.ReceiptItems)
                   .HasForeignKey(i => i.ReceiptId)
                   .OnDelete(DeleteBehavior.Cascade);
+
+                entity.Property(e => e.DiscountValue)
+                .HasColumnType("decimal(18,2)");
+                entity.Property(e => e.ItemPrice)
+                      .HasColumnType("decimal(18,2)");
+                entity.Property(e => e.ItemTotalPrice)
+                      .HasColumnType("decimal(18,2)");
             });
 
             modelBuilder.Entity<ReceiptHeaderMetadata>(entity =>

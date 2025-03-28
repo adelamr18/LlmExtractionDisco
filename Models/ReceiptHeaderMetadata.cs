@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace LlmExtractionApi.Models
 {
@@ -7,7 +9,8 @@ namespace LlmExtractionApi.Models
         public ReceiptHeaderMetadata() { }
         public int HeaderMetadataId { get; set; }
         public Guid ReceiptId { get; set; }
-        public Receipt Receipt { get; set; } = default!;
+        [JsonIgnore]
+        public Receipt? Receipt { get; set; }
         public string MerchantName { get; set; } = string.Empty;
         public string MerchantBranch { get; set; } = string.Empty;
         public string MerchantTelephoneNumbers { get; set; } = string.Empty;

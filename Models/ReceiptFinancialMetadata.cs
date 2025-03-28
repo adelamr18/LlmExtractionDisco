@@ -1,12 +1,17 @@
 
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
 namespace LlmExtractionApi.Models
 {
+    [Table("ReceiptFinancialMetadata")]
     public class ReceiptFinancialMetadata
     {
         public ReceiptFinancialMetadata() { }
         public int FinancialMetadataId { get; set; }
         public Guid ReceiptId { get; set; }
-        public Receipt Receipt { get; set; } = default!;
+        [JsonIgnore]
+        public Receipt? Receipt { get; set; }
         public string SubTotalAmountBeforeDiscount { get; set; } = string.Empty;
         public string DiscountType { get; set; } = string.Empty;
         public string SubTotalAfterDiscount { get; set; } = string.Empty;
