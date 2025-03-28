@@ -6,6 +6,7 @@ namespace LlmExtractionApi.Models
 {
     public class ReceiptHeaderMetadata
     {
+
         public ReceiptHeaderMetadata() { }
         public int HeaderMetadataId { get; set; }
         public Guid ReceiptId { get; set; }
