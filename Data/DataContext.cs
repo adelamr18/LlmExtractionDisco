@@ -54,6 +54,7 @@ namespace LlmExtractionApi.Data
                      .OnDelete(DeleteBehavior.Cascade);
            });
 
+
             modelBuilder.Entity<ReceiptFinancialMetadata>(entity =>
             {
                 entity.HasKey(x => x.FinancialMetadataId);
