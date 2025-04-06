@@ -16,10 +16,10 @@ namespace LlmExtractionApi.Models
         public string ItemBrandNameEnglish { get; set; } = string.Empty;
         public string ItemSubBrandNameArabic { get; set; } = string.Empty;
         public string ItemSubBrandNameEnglish { get; set; } = string.Empty;
-        public decimal? ItemPrice { get; set; }
+        public string? ItemPrice { get; set; }
         public string? ItemQuantityOrWeight { get; set; }
-        public decimal? ItemTotalPrice { get; set; }
-        public decimal? DiscountValue { get; set; }
+        public string? ItemTotalPrice { get; set; }
+        public string? DiscountValue { get; set; }
         public string? DiscountPercentage { get; set; }
         public string? FullQuantityDescription { get; set; }
         public string? ScaleOfWeightCapacity { get; set; }

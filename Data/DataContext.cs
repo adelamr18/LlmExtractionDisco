@@ -38,11 +38,11 @@ namespace LlmExtractionApi.Data
                   .OnDelete(DeleteBehavior.Cascade);
 
                 entity.Property(e => e.DiscountValue)
-                .HasColumnType("decimal(18,2)");
+                .HasMaxLength(50);
                 entity.Property(e => e.ItemPrice)
-                      .HasColumnType("decimal(18,2)");
+                      .HasMaxLength(50);
                 entity.Property(e => e.ItemTotalPrice)
-                      .HasColumnType("decimal(18,2)");
+                      .HasMaxLength(50);
             });
 
             modelBuilder.Entity<ReceiptHeaderMetadata>(entity =>
