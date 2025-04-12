@@ -24,7 +24,8 @@ namespace LlmExtractionApi.Data
             modelBuilder.Entity<Receipt>(entity =>
             {
                 entity.HasKey(r => r.ReceiptId);
-                entity.Property(r => r.ReceiptId).ValueGeneratedNever();
+                entity.Property(r => r.ReceiptId)
+                      .HasDefaultValueSql("NEWID()");
             });
 
             modelBuilder.Entity<ReceiptItem>(entity =>
@@ -37,8 +38,9 @@ namespace LlmExtractionApi.Data
                   .HasForeignKey(i => i.ReceiptId)
                   .OnDelete(DeleteBehavior.Cascade);
 
+                // If these are meant to be decimal columns, consider using .HasPrecision(18,2) instead of max length.
                 entity.Property(e => e.DiscountValue)
-                .HasMaxLength(50);
+                      .HasMaxLength(50);
                 entity.Property(e => e.ItemPrice)
                       .HasMaxLength(50);
                 entity.Property(e => e.ItemTotalPrice)
@@ -46,14 +48,13 @@ namespace LlmExtractionApi.Data
             });
 
             modelBuilder.Entity<ReceiptHeaderMetadata>(entity =>
-           {
-               entity.HasKey(x => x.HeaderMetadataId);
-               entity.HasOne(x => x.Receipt)
-                     .WithOne(x => x.ReceiptHeaderMetadata)
-                     .HasForeignKey<ReceiptHeaderMetadata>(x => x.ReceiptId)
-                     .OnDelete(DeleteBehavior.Cascade);
-           });
-
+            {
+                entity.HasKey(x => x.HeaderMetadataId);
+                entity.HasOne(x => x.Receipt)
+                      .WithOne(x => x.ReceiptHeaderMetadata)
+                      .HasForeignKey<ReceiptHeaderMetadata>(x => x.ReceiptId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
             modelBuilder.Entity<ReceiptFinancialMetadata>(entity =>
             {
@@ -65,22 +66,22 @@ namespace LlmExtractionApi.Data
             });
 
             modelBuilder.Entity<ReceiptDeliveryMetadata>(entity =>
-           {
-               entity.HasKey(x => x.DeliveryMetadataId);
-               entity.HasOne(x => x.Receipt)
-                     .WithOne(x => x.ReceiptDeliveryMetadata)
-                     .HasForeignKey<ReceiptDeliveryMetadata>(x => x.ReceiptId)
-                     .OnDelete(DeleteBehavior.Cascade);
-           });
+            {
+                entity.HasKey(x => x.DeliveryMetadataId);
+                entity.HasOne(x => x.Receipt)
+                      .WithOne(x => x.ReceiptDeliveryMetadata)
+                      .HasForeignKey<ReceiptDeliveryMetadata>(x => x.ReceiptId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
             modelBuilder.Entity<ReceiptMerchantContactsMetadata>(entity =>
-           {
-               entity.HasKey(x => x.MerchantContactsMetadataId);
-               entity.HasOne(x => x.Receipt)
-                     .WithOne(x => x.ReceiptMerchantContactsMetadata)
-                     .HasForeignKey<ReceiptMerchantContactsMetadata>(x => x.ReceiptId)
-                     .OnDelete(DeleteBehavior.Cascade);
-           });
+            {
+                entity.HasKey(x => x.MerchantContactsMetadataId);
+                entity.HasOne(x => x.Receipt)
+                      .WithOne(x => x.ReceiptMerchantContactsMetadata)
+                      .HasForeignKey<ReceiptMerchantContactsMetadata>(x => x.ReceiptId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
         }
     }
 }
