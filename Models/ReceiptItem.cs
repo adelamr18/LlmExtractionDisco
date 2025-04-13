@@ -1,13 +1,20 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace LlmExtractionApi.Models
+
 {
     public class ReceiptItem
     {
         [JsonIgnore]
         public Receipt? Receipt { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [SwaggerSchema(ReadOnly = true)]
         public int ItemId { get; set; }
         public Guid ReceiptId { get; set; }
         public int RowNumber { get; set; }

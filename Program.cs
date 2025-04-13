@@ -18,6 +18,12 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+builder.Services.AddSwaggerGen(options =>
+{
+    options.EnableAnnotations();
+});
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
