@@ -17,10 +17,18 @@ public class ReceiptsController : ControllerBase
     [HttpPost("create-receipt")]
     public async Task<IActionResult> CreateReceipt([FromBody] Receipt model)
     {
-        _db.Receipts.Add(model);
-        await _db.SaveChangesAsync();
-        return Ok(model);
+        try
+        {
+            _db.Receipts.Add(model);
+            await _db.SaveChangesAsync();
+            return Ok(model);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Error creating receipt: {ex.Message}");
+        }
     }
+
 
     [HttpPatch("update-receipt/{receiptId}")]
     public async Task<IActionResult> PatchReceipt(Guid receiptId, [FromBody] Receipt model)
