@@ -50,6 +50,8 @@ public class ReceiptsController : ControllerBase
             existing.DiscoReceiptId = model.DiscoReceiptId;
         if (model.OcrContent != null)
             existing.OcrContent = model.OcrContent;
+        if (model.ProductCategory != null)
+            existing.ProductCategory = model.ProductCategory;
 
         if (model.ReceiptItems != null)
         {
