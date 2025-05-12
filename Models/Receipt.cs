@@ -16,5 +16,8 @@ namespace LlmExtractionApi.Models
         public ReceiptDeliveryMetadata ReceiptDeliveryMetadata { get; set; } = default!;
         public ReceiptMerchantContactsMetadata ReceiptMerchantContactsMetadata { get; set; } = default!;
         public string ProductCategory { get; set; } = "";
+        public string OcrLink { get; set; } = "";
+        public string ExtractionLink { get; set; } = "";
+        public string PictureLink { get; set; } = "";
     }
 }

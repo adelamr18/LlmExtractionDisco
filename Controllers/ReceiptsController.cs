@@ -52,6 +52,12 @@ public class ReceiptsController : ControllerBase
             existing.OcrContent = model.OcrContent;
         if (model.ProductCategory != null)
             existing.ProductCategory = model.ProductCategory;
+        if (model.OcrLink != null)
+            existing.OcrLink = model.OcrLink;
+        if (model.ExtractionLink != null)
+            existing.ExtractionLink = model.ExtractionLink;
+        if (model.PictureLink != null)
+            existing.PictureLink = model.PictureLink;
 
         if (model.ReceiptItems != null)
         {
@@ -174,6 +180,8 @@ public class ReceiptsController : ControllerBase
             existing.ReceiptMerchantContactsMetadata.Facebook = model.ReceiptMerchantContactsMetadata.Facebook ?? existing.ReceiptMerchantContactsMetadata.Facebook;
             existing.ReceiptMerchantContactsMetadata.Instagram = model.ReceiptMerchantContactsMetadata.Instagram ?? existing.ReceiptMerchantContactsMetadata.Instagram;
             existing.ReceiptMerchantContactsMetadata.MerchantWebsite = model.ReceiptMerchantContactsMetadata.MerchantWebsite ?? existing.ReceiptMerchantContactsMetadata.MerchantWebsite;
+            existing.ReceiptMerchantContactsMetadata.MerchantName = model.ReceiptMerchantContactsMetadata.MerchantName ?? existing.ReceiptMerchantContactsMetadata.MerchantName;
+            existing.ReceiptMerchantContactsMetadata.MerchantBranch = model.ReceiptMerchantContactsMetadata.MerchantBranch ?? existing.ReceiptMerchantContactsMetadata.MerchantBranch;
         }
 
         _db.Receipts.Update(existing);

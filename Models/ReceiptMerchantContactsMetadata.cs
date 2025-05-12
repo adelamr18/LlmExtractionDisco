@@ -17,5 +17,7 @@ namespace LlmExtractionApi.Models
         public string Facebook { get; set; } = string.Empty;
         public string Instagram { get; set; } = string.Empty;
         public string MerchantWebsite { get; set; } = string.Empty;
+        public string MerchantName { get; set; } = string.Empty;
+        public string MerchantBranch { get; set; } = string.Empty;
     }
 }
